@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CompanyFragment"
+    >
+
+<android.support.design.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/id_IVcompany_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_mountain"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/testest"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_badge" />
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="0 Days Remaining"
+            android:textColor="@color/coloryellow"
+            android:textStyle="bold"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/testest"
+            android:textAlignment="center"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@color/colorbluedark">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="135dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:textStyle="bold|italic"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="PT. Ratwareid Indocorp"
+                android:textAlignment="center"
+                android:textColor="@color/colorbgblue"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="1000"
+                        android:textAlignment="center"
+                        android:textSize="30dp"
+                        android:fontFamily="sans-serif-condensed"/>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Users"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorbgblue"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="500"
+                        android:textAlignment="center"
+                        android:textSize="30dp"
+                        android:fontFamily="sans-serif-condensed"/>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Work Order"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorbgblue"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="300"
+                        android:textAlignment="center"
+                        android:textSize="30dp"
+                        android:fontFamily="sans-serif-condensed"/>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Reports"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorbgblue"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp">
+        <!-- Isi data detail dari si user -->
+
+    </LinearLayout>
+
+</LinearLayout>
+
+    <!--Penempatan  Photo Profile -->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/id_IVcompany_profile"
+        app:layout_anchorGravity="left|bottom"
+        android:layout_marginLeft="30dp">
+
+        <ImageView
+            android:id="@+id/id_IVphoto_profile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/imageshigh"
+            android:outlineAmbientShadowColor="@android:color/black"
+            android:scaleType="fitXY" />
+
+        <ImageButton
+            android:id="@+id/id_take_photo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignEnd="@id/id_IVphoto_profile"
+            android:layout_alignBottom="@id/id_IVphoto_profile"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/ic_camera_alt_black_24dp"
+            android:background="@color/white"
+            />
+
+    </RelativeLayout>
+    <!--End of photo profile -->
+</android.support.design.widget.CoordinatorLayout>
+
+</ScrollView>
