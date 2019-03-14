@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import com.example.workflowguidance.api.ApiService;
 import com.example.workflowguidance.api.ApiUrl;
 import com.example.workflowguidance.api.SharedPreferenceManager;
-import com.example.workflowguidance.api.request.CompanyModuleApi;
+import com.example.workflowguidance.api.module.CompanyModuleApi;
 import com.example.workflowguidance.api.spkey.SPUserDataKey;
 
 import java.util.Objects;

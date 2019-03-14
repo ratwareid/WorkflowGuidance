@@ -1,4 +1,4 @@
-package com.example.workflowguidance.api.request;
+package com.example.workflowguidance.api.module;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

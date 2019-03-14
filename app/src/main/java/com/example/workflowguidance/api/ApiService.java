@@ -1,7 +1,7 @@
 package com.example.workflowguidance.api;
 
-import com.example.workflowguidance.api.request.CompanyModuleApi;
-import com.example.workflowguidance.api.request.UserModuleApi;
+import com.example.workflowguidance.api.module.CompanyModuleApi;
+import com.example.workflowguidance.api.module.UserModuleApi;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
