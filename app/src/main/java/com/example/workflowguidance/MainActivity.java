@@ -18,16 +18,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.workflowguidance.api.SharedPreferenceManager;
+import com.example.workflowguidance.api.spkey.SPUserDataKey;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     private TextView tvName,tvEmail;
     private NavigationView navigationView;
-    private SharedPreferenceLogin sharedPreferenceLogin;
-    private String username,email,address;
+    private SharedPreferenceManager spManager;
+    private String username,email,companyID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,11 @@ public class MainActivity extends AppCompatActivity
 
         getuserdata();
         frag_company();
+        preventkeyboard();
+    }
+
+    public void preventkeyboard(){
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
     public void frag_company(){
@@ -65,10 +74,12 @@ public class MainActivity extends AppCompatActivity
 
     public void getuserdata(){
 
-        if (username == null && email == null && address == null){
-            sharedPreferenceLogin = new SharedPreferenceLogin(this);
-            username = sharedPreferenceLogin.getSpName();
-            email   = sharedPreferenceLogin.getSpEmail();
+        if (username == null && email == null && companyID == null){
+            spManager = new SharedPreferenceManager(this);
+
+            username = spManager.getSp().getString(SPUserDataKey.Username,"");
+            email   = spManager.getSp().getString(SPUserDataKey.Email,"");
+            companyID = spManager.getSp().getString(SPUserDataKey.CompanyID,"");
 
         }
         View view = navigationView.getHeaderView(0);
@@ -145,7 +156,7 @@ public class MainActivity extends AppCompatActivity
 
 
     public void doLogout() {
-        sharedPreferenceLogin.spEditor.clear().apply();
+        spManager.clearData();
         Intent intent = new Intent (MainActivity.this, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

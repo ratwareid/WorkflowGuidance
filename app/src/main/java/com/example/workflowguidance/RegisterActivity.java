@@ -1,17 +1,15 @@
 package com.example.workflowguidance;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.workflowguidance.api.ApiService;
 import com.example.workflowguidance.api.ApiUrl;
-import com.example.workflowguidance.api.module.UserModuleApi;
+import com.example.workflowguidance.api.request.UserModuleApi;
 
 import retrofit2.Call;
 import retrofit2.Callback;

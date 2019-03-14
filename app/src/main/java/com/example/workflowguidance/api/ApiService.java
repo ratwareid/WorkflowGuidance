@@ -1,6 +1,7 @@
 package com.example.workflowguidance.api;
 
-import com.example.workflowguidance.api.module.UserModuleApi;
+import com.example.workflowguidance.api.request.CompanyModuleApi;
+import com.example.workflowguidance.api.request.UserModuleApi;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -28,5 +29,13 @@ public interface ApiService {
             @Field("address") String address,
             @Field("email") String email,
             @Field("password") String password
+    );
+
+    @FormUrlEncoded
+    @POST("company/data.php")
+    Call<CompanyModuleApi>
+    GetData (
+            @Field("key") String key,
+            @Field("companyID") String companyID
     );
 }

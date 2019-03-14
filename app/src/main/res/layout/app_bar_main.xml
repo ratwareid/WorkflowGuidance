@@ -32,7 +32,7 @@
                 android:layout_below="@id/toolbar"
                 tools:ignore="NotSibling" />
 
-        <android.support.design.widget.FloatingActionButton
+        <!--<android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit_cream_24dp"
@@ -43,6 +43,6 @@
             android:layout_alignParentBottom="true"
             android:clickable="true"
             app:rippleColor="@color/white"
-            />
+            />-->
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

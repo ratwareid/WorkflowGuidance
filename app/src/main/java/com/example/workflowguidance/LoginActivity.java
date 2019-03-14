@@ -1,49 +1,20 @@
 package com.example.workflowguidance;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.app.LoaderManager.LoaderCallbacks;
 
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
-
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.workflowguidance.api.ApiService;
 import com.example.workflowguidance.api.ApiUrl;
-import com.example.workflowguidance.api.module.UserModuleApi;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.example.workflowguidance.api.SharedPreferenceManager;
+import com.example.workflowguidance.api.request.UserModuleApi;
+import com.example.workflowguidance.api.spkey.SPUserDataKey;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,18 +22,16 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static android.Manifest.permission.READ_CONTACTS;
-
 public class LoginActivity extends AppCompatActivity {
 
     private EditText eTEmail,eTPassword;
     private String email,pass;
-    private SharedPreferenceLogin sharedPreferenceLogin;
+    private SharedPreferenceManager spManager;
     private ProgressBar progressBar;
 
     public static final String EXTRA_USERNAME = "com.example.android.workflowguidance.extra.USERNAME";
     public static final String EXTRA_EMAIL = "com.example.android.workflowguidance.extra.EMAIL";
-    public static final String EXTRA_ADDRESS = "com.example.android.workflowguidance.extra.ADDRESS";
+    public static final String EXTRA_COMPANYID = "com.example.android.workflowguidance.extra.COMPANYID";
 
 
     @Override
@@ -73,8 +42,9 @@ public class LoginActivity extends AppCompatActivity {
         eTEmail = findViewById(R.id.id_email_login);
         eTPassword = findViewById(R.id.id_password_login);
 
-        sharedPreferenceLogin = new SharedPreferenceLogin(this);
-        if (sharedPreferenceLogin.getOnLogin()){
+        spManager = new SharedPreferenceManager(this);
+
+        if (spManager.getSp().getBoolean(SPUserDataKey.LOGGED,false)){
             Intent intent = new Intent (LoginActivity.this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
@@ -82,9 +52,6 @@ public class LoginActivity extends AppCompatActivity {
         }
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.INVISIBLE);
-
-        //Set Full Screen Activity
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     public void doSignIn(View view){
@@ -127,21 +94,25 @@ public class LoginActivity extends AppCompatActivity {
                     if (responCode != null) {
                         if (responCode.equals("100")) {
                             progressBar.setProgress(60);
+
                             String name = response.body().getUserName();
                             String email = response.body().getEmail();
-                            String address = response.body().getAddress();
+                            String companyID = response.body().getCompanyID();
+
                             progressBar.setProgress(80);
                             Toast.makeText(LoginActivity.this, responDesc, Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            intent.putExtra(EXTRA_USERNAME, name);
-                            intent.putExtra(EXTRA_ADDRESS, address);
+                           /* intent.putExtra(EXTRA_USERNAME, name);
                             intent.putExtra(EXTRA_EMAIL, email);
+                            intent.putExtra(EXTRA_COMPANYID, companyID);*/
                             progressBar.setProgress(85);
+
                             //Untuk save session login
-                            sharedPreferenceLogin.saveSPString(SharedPreferenceLogin.SP_NAME, name);
-                            sharedPreferenceLogin.saveSPString(SharedPreferenceLogin.SP_EMAIL, email);
-                            sharedPreferenceLogin.saveSPBoolean(SharedPreferenceLogin.ON_LOGIN, true);
+                            spManager.saveSPString(SPUserDataKey.Username, name);
+                            spManager.saveSPString(SPUserDataKey.Email, email);
+                            spManager.saveSPString(SPUserDataKey.CompanyID, companyID);
+                            spManager.saveSPBoolean(SPUserDataKey.LOGGED, true);
 
                             //Start Intent
                             progressBar.setProgress(95);

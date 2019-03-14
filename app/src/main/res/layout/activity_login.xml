@@ -7,7 +7,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".LoginActivity"
-    android:background="@drawable/bg_gradient1">
+    android:background="@drawable/bg_gradient2">
 
 
         <ScrollView
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="toRegister"
                     android:text="@string/txt_btn_register"
-                    android:textColor="@color/white"
+                    android:textColor="@android:color/black"
                     app:backgroundTint="@android:color/transparent"
                     app:cornerRadius="5dp"
                     app:rippleColor="#33AAAAAA"

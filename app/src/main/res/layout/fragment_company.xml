@@ -2,11 +2,12 @@
 
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".CompanyFragment"
+    android:background="@color/abuabu"
     >
 
 <android.support.design.widget.CoordinatorLayout
@@ -32,7 +33,7 @@
             android:scaleType="fitXY"/>
 
         <ImageView
-            android:id="@+id/testest"
+            android:id="@+id/id_IVbadge"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
@@ -47,7 +48,7 @@
             android:textStyle="bold"
             android:layout_marginEnd="10dp"
             android:layout_alignParentEnd="true"
-            android:layout_below="@id/testest"
+            android:layout_below="@id/id_IVbadge"
             android:textAlignment="center"/>
     </RelativeLayout>
     <LinearLayout
@@ -58,18 +59,20 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <TextView
+            <EditText
+                android:id="@+id/id_etCompanyName"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="135dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:textStyle="bold|italic"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="PT. Ratwareid Indocorp"
                 android:textAlignment="center"
-                android:textColor="@color/colorbgblue"/>
+                android:textColor="@color/colorbgblue"
+                android:enabled="false"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -155,13 +158,234 @@
         </RelativeLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp">
-        <!-- Isi data detail dari si user -->
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="10dp">
+
+            <LinearLayout
+                android:layout_width="317dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="20dp"
+                android:weightSum="6">
+                <!-- Isi data detail dari si user -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:layout_width="51dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="Directors" />
+
+                    <EditText
+                        android:id="@+id/id_etDirector"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:enabled="false" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:layout_width="51dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="Type of Bussiness" />
+
+                    <EditText
+                        android:id="@+id/id_etBusinesstype"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:enabled="false" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:layout_width="51dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="Address" />
+
+                    <EditText
+                        android:id="@+id/id_etAddress"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:enabled="false" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:layout_width="51dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="Phone" />
+
+                    <EditText
+                        android:id="@+id/id_etPhone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:enabled="false" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:layout_width="51dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="Website" />
+
+                    <EditText
+                        android:id="@+id/id_etWeb"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:enabled="false" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
+
+                    <TextView
+                        android:layout_width="51dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="Incorporated" />
+
+                    <EditText
+                        android:id="@+id/id_etIncorp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:enabled="false"
+                        android:inputType="date" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <android.support.design.button.MaterialButton
+                android:id="@+id/btn_editcompany"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Edit Company"
+                android:textColor="@android:color/white"
+                app:backgroundTint="@color/colorbluedark"
+                app:cornerRadius="10dp"
+                app:rippleColor="#33AAAAAA"
+                app:strokeColor="@android:color/black"
+                app:strokeWidth="2dp"
+                android:textSize="10dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true"
+                android:weightSum="2">
+
+                <android.support.design.button.MaterialButton
+                    android:id="@+id/btn_Save"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Save"
+                    android:textColor="@android:color/black"
+                    app:backgroundTint="@color/colorBlue"
+                    app:cornerRadius="10dp"
+                    app:rippleColor="#33AAAAAA"
+                    app:strokeColor="@android:color/black"
+                    app:strokeWidth="2dp"
+                    android:textSize="10dp"
+                    android:visibility="gone"/>
+
+                <android.support.design.button.MaterialButton
+                    android:id="@+id/btn_Cancel"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cancel"
+                    android:textColor="@android:color/black"
+                    app:backgroundTint="@color/colorred"
+                    app:cornerRadius="10dp"
+                    app:rippleColor="#33AAAAAA"
+                    app:strokeColor="@android:color/black"
+                    app:strokeWidth="2dp"
+                    android:textSize="10dp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
-
 </LinearLayout>
 
     <!--Penempatan  Photo Profile -->
