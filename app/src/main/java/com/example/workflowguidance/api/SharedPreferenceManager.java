@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import com.example.workflowguidance.R;
 
+import java.util.Date;
+
 public class SharedPreferenceManager {
 
     SharedPreferences sp;
@@ -37,6 +39,7 @@ public class SharedPreferenceManager {
         spEditor.putBoolean(keySP, value);
         spEditor.commit();
     }
+
 
     public SharedPreferences getSp() {
         return sp;

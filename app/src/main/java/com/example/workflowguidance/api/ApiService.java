@@ -38,4 +38,19 @@ public interface ApiService {
             @Field("key") String key,
             @Field("companyID") String companyID
     );
+
+    @FormUrlEncoded
+    @POST("company/save.php")
+    Call<CompanyModuleApi>
+    SendData (
+            @Field("key") String key,
+            @Field("companyID") String companyID,
+            @Field("CName") String companyName,
+            @Field("CDirector") String companyDirector,
+            @Field("CType") String businessType,
+            @Field("CAddress") String companyAddress,
+            @Field("CPhone") String companyPhone,
+            @Field("CWeb") String companyWeb
+            /*@Field("Cin") String companyInc*/
+    );
 }

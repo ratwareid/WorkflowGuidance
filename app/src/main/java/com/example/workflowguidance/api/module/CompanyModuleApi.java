@@ -29,15 +29,19 @@ public class CompanyModuleApi {
     @Expose
     private String companyDirector;
 
-    @SerializedName("BT")
+    @SerializedName("CType")
     @Expose
     private String businessType;
 
-    @SerializedName("PN")
+    @SerializedName("CPhone")
     @Expose
     private String phoneNumber;
 
-    @SerializedName("ID")
+    @SerializedName("CWeb")
+    @Expose
+    private String website;
+
+    @SerializedName("Cin")
     @Expose
     private String incorporatedDate;
 
@@ -111,5 +115,13 @@ public class CompanyModuleApi {
 
     public void setIncorporatedDate(String incorporatedDate) {
         this.incorporatedDate = incorporatedDate;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
     }
 }

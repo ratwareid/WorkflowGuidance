@@ -29,11 +29,6 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferenceManager spManager;
     private ProgressBar progressBar;
 
-    public static final String EXTRA_USERNAME = "com.example.android.workflowguidance.extra.USERNAME";
-    public static final String EXTRA_EMAIL = "com.example.android.workflowguidance.extra.EMAIL";
-    public static final String EXTRA_COMPANYID = "com.example.android.workflowguidance.extra.COMPANYID";
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,9 +98,6 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, responDesc, Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                           /* intent.putExtra(EXTRA_USERNAME, name);
-                            intent.putExtra(EXTRA_EMAIL, email);
-                            intent.putExtra(EXTRA_COMPANYID, companyID);*/
                             progressBar.setProgress(85);
 
                             //Untuk save session login

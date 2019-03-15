@@ -200,7 +200,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
-                        android:enabled="false" />
+                        android:enabled="false"
+                        android:textSize="15dp"
+                        android:textColor="@android:color/black"/>
 
                 </LinearLayout>
 
@@ -223,7 +225,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
-                        android:enabled="false" />
+                        android:enabled="false"
+                        android:textSize="15dp"
+                        android:textColor="@android:color/black"/>
 
                 </LinearLayout>
 
@@ -246,7 +250,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
-                        android:enabled="false" />
+                        android:enabled="false"
+                        android:textSize="15dp"
+                        android:textColor="@android:color/black"/>
 
                 </LinearLayout>
 
@@ -269,7 +275,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
-                        android:enabled="false" />
+                        android:enabled="false"
+                        android:textSize="15dp"
+                        android:textColor="@android:color/black"/>
 
                 </LinearLayout>
 
@@ -292,7 +300,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
-                        android:enabled="false" />
+                        android:enabled="false"
+                        android:textSize="15dp"
+                        android:textColor="@android:color/black"/>
 
                 </LinearLayout>
 
@@ -316,7 +326,11 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="4"
                         android:enabled="false"
-                        android:inputType="date" />
+                        android:inputType="date"
+                        android:textSize="15dp"
+                        android:ems="10"
+                        android:textColor="@android:color/black"
+                        />
 
                 </LinearLayout>
 
