@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.button.MaterialButton;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -25,6 +26,7 @@ import com.example.workflowguidance.api.module.CompanyModuleApi;
 import com.example.workflowguidance.api.spkey.SPCompanyDataKey;
 import com.example.workflowguidance.api.spkey.SPUserDataKey;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
@@ -43,6 +45,7 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
     private String companyName,director,businesstype,address,phone,web,incorp;
     SharedPreferenceManager spManager;
     public Activity mActivity;
+
 
     public CompanyFragment() {
         // Required empty public constructor
@@ -98,7 +101,9 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
         etPhone = view.findViewById(R.id.id_etPhone);
         etWeb = view.findViewById(R.id.id_etWeb);
         etIncorp = view.findViewById(R.id.id_etIncorp);
+        etIncorp.setOnClickListener(this);
     }
+
 
     @Override
     public void onClick(View v) {
@@ -131,7 +136,16 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
             //Hit to WS
             confirmDialog("Save");
         }
+        if (v.equals(etIncorp)){
+            if (etIncorp.isEnabled()) {
+                DialogFragment picker = new DatePickerFragment();
+                picker.show(getFragmentManager(), "datePicker");
+                Date date = ((DatePickerFragment) picker).getDateFromDatePicker();
+                etIncorp.setText(date.toString());
+            }
+        }
     }
+
 
     public void doCancel(){
         FragmentTransaction ft = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
