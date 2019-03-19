@@ -1,6 +1,7 @@
 package com.example.workflowguidance;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -26,6 +28,7 @@ import com.example.workflowguidance.api.module.CompanyModuleApi;
 import com.example.workflowguidance.api.spkey.SPCompanyDataKey;
 import com.example.workflowguidance.api.spkey.SPUserDataKey;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -37,15 +40,18 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class CompanyFragment extends Fragment implements View.OnClickListener {
+public class CompanyFragment extends Fragment implements View.OnClickListener, DatePickerFragment.DatePickerDialogFragmentEvents {
 
     private ImageView IVbadge;
     private MaterialButton btEdit,btSave,btCancel;
-    private EditText etCompanyName,etDirector,etBusinessType,etAddress,etPhone,etWeb,etIncorp;
+    private EditText etCompanyName,etDirector,etBusinessType,etAddress,etPhone,etWeb;
     private String companyName,director,businesstype,address,phone,web,incorp;
+    private Integer totalUser,totalWO,totalReport;
     SharedPreferenceManager spManager;
     public Activity mActivity;
-
+    private String mode;
+    private TextView tvTotalUser,tvIncorp;
+    private String selectedDate;
 
     public CompanyFragment() {
         // Required empty public constructor
@@ -65,7 +71,7 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
 
         super.onCreate(savedInstanceState);
         spManager = new SharedPreferenceManager(Objects.requireNonNull(this.getContext()));
-
+        mode = "view";
     }
 
     @Override
@@ -86,6 +92,11 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
     }
 
     private void init(View view) {
+
+        //Header
+        tvTotalUser = view.findViewById(R.id.id_tvTotalUser);
+
+        //Detail
         IVbadge = view.findViewById(R.id.id_IVbadge);
         IVbadge.setOnClickListener(this);
         btEdit = view.findViewById(R.id.btn_editcompany);
@@ -100,8 +111,8 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
         etAddress = view.findViewById(R.id.id_etAddress);
         etPhone = view.findViewById(R.id.id_etPhone);
         etWeb = view.findViewById(R.id.id_etWeb);
-        etIncorp = view.findViewById(R.id.id_etIncorp);
-        etIncorp.setOnClickListener(this);
+        tvIncorp =  view.findViewById(R.id.id_tvIncorp);
+        tvIncorp.setOnClickListener(this);
     }
 
 
@@ -114,13 +125,13 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
             ft.commit();
         }
         if (v.equals(btEdit)){
+            mode = "edit";
             etCompanyName.setEnabled(true);
             etDirector.setEnabled(true);
             etBusinessType.setEnabled(true);
             etAddress.setEnabled(true);
             etPhone.setEnabled(true);
             etWeb.setEnabled(true);
-            etIncorp.setEnabled(true);
 
             //Remove btn Edit and visible btn save,cancel
             btEdit.setVisibility(View.GONE);
@@ -136,16 +147,14 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
             //Hit to WS
             confirmDialog("Save");
         }
-        if (v.equals(etIncorp)){
-            if (etIncorp.isEnabled()) {
+        if (v.equals(tvIncorp)){
+            if (mode.equalsIgnoreCase("edit")) {
                 DialogFragment picker = new DatePickerFragment();
-                picker.show(getFragmentManager(), "datePicker");
-                Date date = ((DatePickerFragment) picker).getDateFromDatePicker();
-                etIncorp.setText(date.toString());
+                ((DatePickerFragment) picker).setDatePickerDialogFragmentEvents(this); //Changed
+                picker.show(getFragmentManager(), "Date Picker");
             }
         }
     }
-
 
     public void doCancel(){
         FragmentTransaction ft = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
@@ -206,6 +215,9 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
                 if (responCode != null) {
                     if (responCode.equals("100")) {
 
+                        //Report Data
+                        Integer TotalUser = response.body().getTotalUser();
+
                         String CName = response.body().getCompanyName();
                         String CDir = response.body().getCompanyDirector();
                         String CType = response.body().getBusinessType();
@@ -214,7 +226,9 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
                         String CWeb = response.body().getWebsite();
                         String CInc = response.body().getIncorporatedDate();
 
+
                         //Simpan data ke Shared Preference
+                        spManager.saveSPInt(SPCompanyDataKey.TotalUser,TotalUser);
                         spManager.saveSPString(SPCompanyDataKey.CompanyName, CName);
                         spManager.saveSPString(SPCompanyDataKey.Director, CDir);
                         spManager.saveSPString(SPCompanyDataKey.BusinessType, CType);
@@ -250,7 +264,7 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
 
         getCurrentData(); //Ambil data terbaru yang sudah di edit
 
-        Call<CompanyModuleApi> call = service.SendData(ApiUrl.API_KEY, companyID,companyName,director,businesstype,address,phone,web);
+        Call<CompanyModuleApi> call = service.SendData(ApiUrl.API_KEY, companyID,companyName,director,businesstype,address,phone,web,incorp);
         call.enqueue(new Callback<CompanyModuleApi>() {
             @Override
             public void onResponse(Call<CompanyModuleApi> call, Response<CompanyModuleApi> response) {
@@ -302,10 +316,14 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
         address = etAddress.getText().toString();
         phone = etPhone.getText().toString();
         web = etWeb.getText().toString();
-        /*incorp = etIncorp.getText().toString();*/
+        incorp = tvIncorp.getText().toString();
     }
 
     public void getCompanyData(){
+
+        //Header
+        totalUser = spManager.getSp().getInt(SPCompanyDataKey.TotalUser,0);
+
         companyName = spManager.getSp().getString(SPCompanyDataKey.CompanyName,"");
         director = spManager.getSp().getString(SPCompanyDataKey.Director,"");
         businesstype = spManager.getSp().getString(SPCompanyDataKey.BusinessType,"");
@@ -316,12 +334,22 @@ public class CompanyFragment extends Fragment implements View.OnClickListener {
     }
 
     public void placeAllData(){
+
+        //Header
+        tvTotalUser.setText(totalUser.toString());
+
         etCompanyName.setText(companyName);
         etDirector.setText(director);
         etBusinessType.setText(businesstype);
         etAddress.setText(address);
         etPhone.setText(phone);
         etWeb.setText(web);
-        etIncorp.setText(incorp);
+        tvIncorp.setText(incorp);
+    }
+
+    @Override
+    public void onDateSelected(String date) {
+        selectedDate = date;
+        tvIncorp.setText(selectedDate);
     }
 }

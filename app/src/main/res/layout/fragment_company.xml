@@ -90,10 +90,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/id_tvTotalUser"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="1000"
+                        android:text="0"
                         android:textAlignment="center"
                         android:textSize="30dp"
                         android:fontFamily="sans-serif-condensed"/>
@@ -116,7 +117,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="500"
+                        android:text="0"
                         android:textAlignment="center"
                         android:textSize="30dp"
                         android:fontFamily="sans-serif-condensed"/>
@@ -139,7 +140,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="300"
+                        android:text="0"
                         android:textAlignment="center"
                         android:textSize="30dp"
                         android:fontFamily="sans-serif-condensed"/>
@@ -302,7 +303,9 @@
                         android:layout_weight="4"
                         android:enabled="false"
                         android:textSize="15dp"
-                        android:textColor="@android:color/black"/>
+                        android:textColor="@android:color/black"
+                        android:autoLink="web"
+                        android:linksClickable="true" />
 
                 </LinearLayout>
 
@@ -320,16 +323,17 @@
                         android:layout_weight="1"
                         android:text="Incorporated" />
 
-                    <EditText
-                        android:id="@+id/id_etIncorp"
+                    <TextView
+                        android:id="@+id/id_tvIncorp"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="35dp"
                         android:layout_weight="4"
-                        android:enabled="false"
-                        android:inputType="date"
                         android:textSize="15dp"
                         android:ems="10"
                         android:textColor="@android:color/black"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="8dp"
+
                         />
 
                 </LinearLayout>
@@ -414,7 +418,7 @@
             android:id="@+id/id_IVphoto_profile"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/imageshigh"
+            android:src="@drawable/person_vector"
             android:outlineAmbientShadowColor="@android:color/black"
             android:scaleType="fitXY" />
 
@@ -427,7 +431,7 @@
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
             android:src="@drawable/ic_camera_alt_black_24dp"
-            android:background="@color/white"
+            android:background="@android:color/transparent"
             />
 
     </RelativeLayout>

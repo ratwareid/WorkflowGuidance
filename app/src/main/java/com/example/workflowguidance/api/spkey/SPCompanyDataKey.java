@@ -11,4 +11,6 @@ public class SPCompanyDataKey {
     public static final String WEB          = "WEBSITE";
     public static final String INCORP       = "INCORPORATED";
 
+    //List Header Report
+    public static final String TotalUser   =  "TOTALUSER";
 }

@@ -50,7 +50,7 @@ public interface ApiService {
             @Field("CType") String businessType,
             @Field("CAddress") String companyAddress,
             @Field("CPhone") String companyPhone,
-            @Field("CWeb") String companyWeb
-            /*@Field("Cin") String companyInc*/
+            @Field("CWeb") String companyWeb,
+            @Field("Cin") String companyInc
     );
 }

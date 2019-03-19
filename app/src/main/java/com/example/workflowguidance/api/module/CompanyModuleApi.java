@@ -15,7 +15,7 @@ public class CompanyModuleApi {
 
     @SerializedName("TotalUser")
     @Expose
-    private String totalUser;
+    private Integer totalUser;
 
     @SerializedName("CName")
     @Expose
@@ -61,11 +61,11 @@ public class CompanyModuleApi {
         this.responDesc = responDesc;
     }
 
-    public String getTotalUser() {
+    public Integer getTotalUser() {
         return totalUser;
     }
 
-    public void setTotalUser(String totalUser) {
+    public void setTotalUser(Integer totalUser) {
         this.totalUser = totalUser;
     }
 
