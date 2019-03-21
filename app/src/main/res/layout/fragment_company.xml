@@ -29,8 +29,8 @@
             android:id="@+id/id_IVcompany_profile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/bg_mountain"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:src="@drawable/bg_mountain" />
 
         <ImageView
             android:id="@+id/id_IVbadge"
@@ -39,14 +39,16 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="60dp"
             android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_badge" />
+            android:src="@drawable/ic_badge"
+            android:outlineAmbientShadowColor="@android:color/black"
+            android:outlineSpotShadowColor="@android:color/black"/>
         <TextView
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="0 Days Remaining"
             android:textColor="@color/coloryellow"
             android:textStyle="bold"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="0dp"
             android:layout_alignParentEnd="true"
             android:layout_below="@id/id_IVbadge"
             android:textAlignment="center"/>
@@ -418,7 +420,7 @@
             android:id="@+id/id_IVphoto_profile"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/person_vector"
+            android:src="@drawable/imageshigh"
             android:outlineAmbientShadowColor="@android:color/black"
             android:scaleType="fitXY" />
 

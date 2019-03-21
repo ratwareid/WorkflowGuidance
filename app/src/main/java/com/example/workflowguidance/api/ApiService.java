@@ -53,4 +53,13 @@ public interface ApiService {
             @Field("CWeb") String companyWeb,
             @Field("Cin") String companyInc
     );
+
+    @FormUrlEncoded
+    @POST("company/uploadimg.php")
+    Call<CompanyModuleApi>
+    UploadImg (
+            @Field("key") String key,
+            @Field("companyID") String companyID,
+            @Field("imgBase64") String imageBase64
+    );
 }

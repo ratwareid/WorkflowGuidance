@@ -45,6 +45,18 @@ public class CompanyModuleApi {
     @Expose
     private String incorporatedDate;
 
+    @SerializedName("CProfile")
+    @Expose
+    private String companyProfile;
+
+    public String getCompanyProfile() {
+        return companyProfile;
+    }
+
+    public void setCompanyProfile(String companyProfile) {
+        this.companyProfile = companyProfile;
+    }
+
     public String getResponCode() {
         return responCode;
     }

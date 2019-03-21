@@ -1,13 +1,19 @@
 package com.example.workflowguidance;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -39,6 +45,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(""); //Menghilangkan title
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -52,6 +59,16 @@ public class MainActivity extends AppCompatActivity
         getuserdata();
         frag_company();
         preventkeyboard();
+        checkpermission();
+    }
+
+    public void checkpermission(){
+
+        PermissionManager pm = new PermissionManager();
+        boolean allowPM = pm.checkPermissionForReadExtertalStorage(this);
+        if (!allowPM){
+            pm.requestPermissionForReadExtertalStorage(this);
+        }
     }
 
     public void preventkeyboard(){
@@ -63,6 +80,7 @@ public class MainActivity extends AppCompatActivity
         CompanyFragment fragmentcompany = new CompanyFragment();
         ft.replace(R.id.FrameFragment, fragmentcompany);
         ft.commit();
+        getSupportActionBar().setTitle("Company Profile");
     }
 
     public void frag_master(){
@@ -70,6 +88,7 @@ public class MainActivity extends AppCompatActivity
         MasterDataFragment fragmentmaster = new MasterDataFragment();
         ft.replace(R.id.FrameFragment, fragmentmaster);
         ft.commit();
+        getSupportActionBar().setTitle("Master Data");
     }
 
     public void getuserdata(){
@@ -162,5 +181,6 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
         finish();
     }
+
 
 }

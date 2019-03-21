@@ -13,4 +13,7 @@ public class SPCompanyDataKey {
 
     //List Header Report
     public static final String TotalUser   =  "TOTALUSER";
+
+    //List Image
+    public static final String ProfilePicture   =  "PROFILEPP";
 }
