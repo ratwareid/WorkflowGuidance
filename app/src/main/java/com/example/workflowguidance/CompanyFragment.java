@@ -31,6 +31,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.workflowguidance.api.ApiService;
@@ -39,6 +40,8 @@ import com.example.workflowguidance.api.SharedPreferenceManager;
 import com.example.workflowguidance.api.module.CompanyModuleApi;
 import com.example.workflowguidance.api.spkey.SPCompanyDataKey;
 import com.example.workflowguidance.api.spkey.SPUserDataKey;
+import com.facebook.shimmer.ShimmerFrameLayout;
+
 import java.io.ByteArrayOutputStream;
 import java.util.Objects;
 import retrofit2.Call;
@@ -61,14 +64,17 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
     private String mode;
     private TextView tvTotalUser,tvIncorp;
     private String selectedDate;
-    private ImageButton ibTakePhoto;
+    private ImageView ibTakePhoto;
     private String imgProfile;
     private ProgressDialog progressDialog;
+    private RelativeLayout RLparentProfile;
 
     Uri imageUri;
     private static final int PICK_IMAGE = 1;
     private static final int PICK_Camera_IMAGE = 2;
     private Bitmap bitmap;
+
+    private ShimmerFrameLayout shimmerProfile;
 
     public CompanyFragment() {
         // Required empty public constructor
@@ -89,7 +95,6 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
         super.onCreate(savedInstanceState);
         spManager = new SharedPreferenceManager(Objects.requireNonNull(this.getContext()));
         mode = "view";
-        requestData();
     }
 
     @Override
@@ -100,6 +105,7 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
 
         //Inisialisasi Btn on click
         this.init(view);
+        requestData();
         return view;
     }
 
@@ -108,8 +114,37 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
         super.onStart();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        initShimmer(true);
+        requestData();
+    }
+
+    @Override
+    public void onPause() {
+        initShimmer(false);
+        super.onPause();
+    }
+
+    public void initShimmer(boolean enable){
+
+        if (enable){
+            shimmerProfile.startShimmerAnimation();
+            RLparentProfile.setVisibility(View.GONE);
+        }else{
+            shimmerProfile.stopShimmerAnimation();
+            shimmerProfile.setVisibility(View.GONE);
+            RLparentProfile.setVisibility(View.VISIBLE);
+        }
+
+    }
 
     private void init(View view) {
+
+        //Shimmer
+        shimmerProfile = view.findViewById(R.id.id_shimmerProfile);
+        RLparentProfile = view.findViewById(R.id.id_ParentProfile);
 
         //Header
         tvTotalUser = view.findViewById(R.id.id_tvTotalUser);
@@ -185,6 +220,8 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
     public void doSave(){
         // Hit WS to Save data
         saveData();
+        getCompanyData();
+        placeAllData();
         //End Hit
 
         doCancel();
@@ -262,7 +299,10 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
                         spManager.saveSPString(SPCompanyDataKey.INCORP, CInc);
 
                         getCompanyData();
+                        initShimmer(false);
+                        IVProfile.setVisibility(View.VISIBLE);
                         placeAllData();
+
                     }else{
                         Toast.makeText(mActivity, responDesc, Toast.LENGTH_SHORT).show();
                     }

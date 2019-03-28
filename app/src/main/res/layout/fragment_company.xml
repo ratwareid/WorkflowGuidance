@@ -8,6 +8,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".CompanyFragment"
     android:background="@color/abuabu"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
     >
 
 <android.support.design.widget.CoordinatorLayout
@@ -67,11 +68,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="135dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                android:textSize="15dp"
+                android:layout_marginTop="5dp"
+                android:textSize="18dp"
                 android:textStyle="bold|italic"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:text="PT. Ratwareid Indocorp"
                 android:textAlignment="center"
                 android:textColor="@color/colorbgblue"
                 android:enabled="false"/>
@@ -96,7 +96,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="0"
                         android:textAlignment="center"
                         android:textSize="30dp"
                         android:fontFamily="sans-serif-condensed"/>
@@ -119,7 +118,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="0"
                         android:textAlignment="center"
                         android:textSize="30dp"
                         android:fontFamily="sans-serif-condensed"/>
@@ -142,7 +140,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:text="0"
                         android:textAlignment="center"
                         android:textSize="30dp"
                         android:fontFamily="sans-serif-condensed"/>
@@ -409,22 +406,40 @@
 </LinearLayout>
 
     <!--Penempatan  Photo Profile -->
-    <RelativeLayout
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/id_shimmerProfile"
+        shimmer:duration="800"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_anchor="@id/id_IVcompany_profile"
         app:layout_anchorGravity="left|bottom"
-        android:layout_marginLeft="30dp">
+        android:layout_marginLeft="25dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/background"
+            android:outlineAmbientShadowColor="@android:color/black"
+            android:scaleType="fitXY" />
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/id_ParentProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        app:layout_anchor="@id/id_IVcompany_profile"
+        app:layout_anchorGravity="left|bottom">
 
         <ImageView
             android:id="@+id/id_IVphoto_profile"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/imageshigh"
+            android:background="@color/background"
             android:outlineAmbientShadowColor="@android:color/black"
             android:scaleType="fitXY" />
-
-        <ImageButton
+        <ImageView
             android:id="@+id/id_take_photo"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -432,7 +447,7 @@
             android:layout_alignBottom="@id/id_IVphoto_profile"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
-            android:src="@drawable/ic_camera_alt_black_24dp"
+            android:src="@drawable/ic_photo_camera"
             android:background="@android:color/transparent"
             />
 
