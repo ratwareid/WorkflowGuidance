@@ -40,10 +40,13 @@ import com.example.workflowguidance.api.SharedPreferenceManager;
 import com.example.workflowguidance.api.module.CompanyModuleApi;
 import com.example.workflowguidance.api.spkey.SPCompanyDataKey;
 import com.example.workflowguidance.api.spkey.SPUserDataKey;
-import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -73,8 +76,6 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
     private static final int PICK_IMAGE = 1;
     private static final int PICK_Camera_IMAGE = 2;
     private Bitmap bitmap;
-
-    private ShimmerFrameLayout shimmerProfile;
 
     public CompanyFragment() {
         // Required empty public constructor
@@ -117,33 +118,15 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
     @Override
     public void onResume() {
         super.onResume();
-        initShimmer(true);
         requestData();
     }
 
     @Override
     public void onPause() {
-        initShimmer(false);
         super.onPause();
     }
 
-    public void initShimmer(boolean enable){
-
-        if (enable){
-            shimmerProfile.startShimmerAnimation();
-            RLparentProfile.setVisibility(View.GONE);
-        }else{
-            shimmerProfile.stopShimmerAnimation();
-            shimmerProfile.setVisibility(View.GONE);
-            RLparentProfile.setVisibility(View.VISIBLE);
-        }
-
-    }
-
     private void init(View view) {
-
-        //Shimmer
-        shimmerProfile = view.findViewById(R.id.id_shimmerProfile);
         RLparentProfile = view.findViewById(R.id.id_ParentProfile);
 
         //Header
@@ -299,7 +282,6 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
                         spManager.saveSPString(SPCompanyDataKey.INCORP, CInc);
 
                         getCompanyData();
-                        initShimmer(false);
                         IVProfile.setVisibility(View.VISIBLE);
                         placeAllData();
 
@@ -594,10 +576,18 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
     public void doUploadImage(Bitmap bitmap){
 
         String img64 = decodeBitmap(bitmap);
+        OkHttpClient.Builder mBuilder = new OkHttpClient.Builder();
+        HttpLoggingInterceptor mHttpLoggingInterceptor = new HttpLoggingInterceptor();
+        mHttpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        mBuilder.connectTimeout(30, TimeUnit.SECONDS);
+        mBuilder.readTimeout(30, TimeUnit.SECONDS);
+        mBuilder.addInterceptor(mHttpLoggingInterceptor);
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiUrl.URL_HEAD)
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(mBuilder.build())
                 .build();
         ApiService service = retrofit.create(ApiService.class);
 

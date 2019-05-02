@@ -31,33 +31,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@drawable/bg_mountain" />
-
-        <ImageView
-            android:id="@+id/id_IVbadge"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_badge"
-            android:outlineAmbientShadowColor="@android:color/black"
-            android:outlineSpotShadowColor="@android:color/black"/>
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="0 Days Remaining"
-            android:textColor="@color/coloryellow"
-            android:textStyle="bold"
-            android:layout_marginEnd="0dp"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@id/id_IVbadge"
-            android:textAlignment="center"/>
+            android:src="@drawable/companywall" />
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:background="@color/colorbluedark">
+        android:background="@color/abubiru">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -98,6 +77,8 @@
                         android:layout_marginTop="20dp"
                         android:textAlignment="center"
                         android:textSize="30dp"
+                        android:text="0"
+                        android:textColor="@color/white"
                         android:fontFamily="sans-serif-condensed"/>
                     <TextView
                         android:layout_marginTop="5dp"
@@ -106,7 +87,7 @@
                         android:text="Users"
                         android:textStyle="bold"
                         android:textAlignment="center"
-                        android:textColor="@color/colorbgblue"/>
+                        android:textColor="@color/white"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -120,6 +101,8 @@
                         android:layout_marginTop="20dp"
                         android:textAlignment="center"
                         android:textSize="30dp"
+                        android:text="0"
+                        android:textColor="@color/white"
                         android:fontFamily="sans-serif-condensed"/>
                     <TextView
                         android:layout_marginTop="5dp"
@@ -128,7 +111,7 @@
                         android:text="Work Order"
                         android:textStyle="bold"
                         android:textAlignment="center"
-                        android:textColor="@color/colorbgblue"/>
+                        android:textColor="@color/white"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -142,6 +125,8 @@
                         android:layout_marginTop="20dp"
                         android:textAlignment="center"
                         android:textSize="30dp"
+                        android:text="0"
+                        android:textColor="@color/white"
                         android:fontFamily="sans-serif-condensed"/>
                     <TextView
                         android:layout_marginTop="5dp"
@@ -150,7 +135,7 @@
                         android:text="Reports"
                         android:textStyle="bold"
                         android:textAlignment="center"
-                        android:textColor="@color/colorbgblue"/>
+                        android:textColor="@color/white"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -169,7 +154,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginHorizontal="15dp"
             android:layout_marginVertical="10dp">
 
             <LinearLayout
@@ -405,54 +390,51 @@
     </LinearLayout>
 </LinearLayout>
 
-    <!--Penempatan  Photo Profile -->
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/id_shimmerProfile"
-        shimmer:duration="800"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_anchor="@id/id_IVcompany_profile"
-        app:layout_anchorGravity="left|bottom"
-        android:layout_marginLeft="25dp">
+        <RelativeLayout
+            android:id="@+id/id_ParentProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            app:layout_anchor="@id/id_IVcompany_profile"
+            app:layout_anchorGravity="left|bottom">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@color/background"
-            android:outlineAmbientShadowColor="@android:color/black"
-            android:scaleType="fitXY" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/id_take_photo"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignEnd="@id/CV_Profile"
+                android:layout_alignBottom="@id/CV_Profile"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                android:src="@drawable/ic_add_black_24dp"
+                app:civ_border_color="#fff"
+                app:civ_border_width="2dp"
+                app:civ_fill_color="@color/colorBlue"
+                android:elevation="5px"
+                />
 
-    </com.facebook.shimmer.ShimmerFrameLayout>
+            <android.support.v7.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/CV_Profile"
+                app:cardCornerRadius="50dp"
+                android:shape="ring"
+                android:elevation="0px"
+                android:background="@color/background"
+                android:outlineAmbientShadowColor="@color/dark80"
+                android:outlineSpotShadowColor="@color/dark80">
 
-    <RelativeLayout
-        android:id="@+id/id_ParentProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        app:layout_anchor="@id/id_IVcompany_profile"
-        app:layout_anchorGravity="left|bottom">
+                <ImageView
+                    android:id="@+id/id_IVphoto_profile"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:outlineAmbientShadowColor="@android:color/black"
+                    android:scaleType="fitXY" />
 
-        <ImageView
-            android:id="@+id/id_IVphoto_profile"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@color/background"
-            android:outlineAmbientShadowColor="@android:color/black"
-            android:scaleType="fitXY" />
-        <ImageView
-            android:id="@+id/id_take_photo"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignEnd="@id/id_IVphoto_profile"
-            android:layout_alignBottom="@id/id_IVphoto_profile"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:src="@drawable/ic_photo_camera"
-            android:background="@android:color/transparent"
-            />
+            </android.support.v7.widget.CardView>
 
-    </RelativeLayout>
-    <!--End of photo profile -->
+        </RelativeLayout>
+        <!--End of photo profile -->
 </android.support.design.widget.CoordinatorLayout>
 
 </ScrollView>
