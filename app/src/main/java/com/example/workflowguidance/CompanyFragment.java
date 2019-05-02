@@ -103,7 +103,6 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_company, container, false);
-
         //Inisialisasi Btn on click
         this.init(view);
         requestData();
@@ -153,7 +152,6 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
         ibTakePhoto.setOnClickListener(this);
         IVProfile = view.findViewById(R.id.id_IVphoto_profile);
     }
-
 
     @Override
     public void onClick(View v) {
@@ -446,12 +444,11 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
             @Override
             public void onClick(View view) {
                 try {
-                    Intent gintent = new Intent();
-                    gintent.setType("image/*");
-                    gintent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(
-                            Intent.createChooser(gintent, "Select Picture"),
-                            PICK_IMAGE);
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                    intent.setAction(Intent.ACTION_PICK);//
+                    startActivityForResult(Intent.createChooser(intent, "Select Picture"),PICK_IMAGE);
                 } catch (Exception e) {
                     Toast.makeText(getActivity().getApplicationContext(),
                             e.getMessage(),
