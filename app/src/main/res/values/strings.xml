@@ -31,4 +31,38 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string-array name="master_name">
+        <item>Master User</item>
+        <item>Master Department</item>
+        <item>Master Position</item>
+        <item>Master Job Type</item>
+        <item>Master Item</item>
+        <item>Master Warehouse</item>
+        <item>Master Step</item>
+        <item>Master Workflow</item>
+    </string-array>
+
+    <string-array name="master_detail">
+        <item>Here is to create or modify list user</item>
+        <item>Here is to create or modify list department of user</item>
+        <item>Here is to create or modify list position of user</item>
+        <item>Here is to create or modify list of job type</item>
+        <item>Here is to create or modify list of item</item>
+        <item>Here is to create or modify list of warehouse</item>
+        <item>Here is to create or modify list of step in workflow</item>
+        <item>Here is to create or modify list of workflow</item>
+    </string-array>
+
+    <array name="master_images">
+        <item>@drawable/m_user</item>
+        <item>@drawable/m_department</item>
+        <item>@drawable/m_position</item>
+        <item>@drawable/m_jobtype</item>
+        <item>@drawable/m_item</item>
+        <item>@drawable/m_warehouse</item>
+        <item>@drawable/m_step</item>
+        <item>@drawable/m_workflow</item>
+    </array>
 </resources>
