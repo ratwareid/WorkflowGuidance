@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.workflowguidance.api.ApiService;
@@ -21,46 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText etName,etAddress, etEmail, etPW, etRPW;
     private String name,address,email,pass,repass;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    public String getRepass() {
-        return repass;
-    }
-
-    public void setRepass(String repass) {
-        this.repass = repass;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    private ProgressBar progressBar2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,10 +34,12 @@ public class RegisterActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.id_email);
         etPW = findViewById(R.id.id_password);
         etRPW = findViewById(R.id.id_re_password);
+        progressBar2 = findViewById(R.id.progressBar2);
     }
 
     public boolean validateField(){
         boolean failed = false;
+
 
         setName(etName.getText().toString());
         setAddress(etAddress.getText().toString());
@@ -128,11 +92,15 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void sendRegister(String name,String address,String email,String pass){
 
+        progressBar2.setVisibility(View.VISIBLE);
+        progressBar2.setProgress(10);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiUrl.URL_HEAD)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        progressBar2.setProgress(30);
         ApiService service = retrofit.create(ApiService.class);
+        progressBar2.setProgress(50);
         Call<UserModuleApi> call = service.Register(ApiUrl.API_KEY,name,address,email,pass);
 
         call.enqueue(new Callback<UserModuleApi>() {
@@ -140,14 +108,18 @@ public class RegisterActivity extends AppCompatActivity {
             public void onResponse(Call<UserModuleApi> call, Response<UserModuleApi> response) {
 
                 if (response.isSuccessful()){
+                    progressBar2.setProgress(70);
                     String responCode = response.body().getResponCode();
                     String responDesc = response.body().getResponDesc();
 
                     if (responCode != null) {
                         if (responCode.equals("100")) {
 
+                            progressBar2.setProgress(80);
                             Toast.makeText(RegisterActivity.this, responDesc, Toast.LENGTH_SHORT).show();
+                            progressBar2.setProgress(100);
                             finish();
+                            progressBar2.setVisibility(View.GONE);
                         }else if (responCode.equals("104")){
                             etEmail.setError("Already Exist");
                             Toast.makeText(RegisterActivity.this, responDesc, Toast.LENGTH_SHORT).show();
@@ -164,5 +136,45 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public String getRepass() {
+        return repass;
+    }
+
+    public void setRepass(String repass) {
+        this.repass = repass;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

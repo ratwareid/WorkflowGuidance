@@ -49,7 +49,8 @@
                         android:hint="@string/prompt_email"
                         android:inputType="textEmailAddress"
                         android:maxLines="1"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:textColor="@color/white"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -69,7 +70,8 @@
                         android:imeOptions="actionUnspecified"
                         android:inputType="textPassword"
                         android:maxLines="1"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:textColor="@color/white"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -100,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="toRegister"
                     android:text="@string/txt_btn_register"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/white"
                     app:backgroundTint="@android:color/transparent"
                     app:cornerRadius="5dp"
                     app:rippleColor="#33AAAAAA"

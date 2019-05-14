@@ -25,7 +25,7 @@
             android:text="@string/txt_head_register"
             android:textAlignment="center"
             android:textSize="20sp"
-            android:paddingTop="60dp"
+            android:paddingTop="50dp"
             android:textStyle="bold"
             android:fontFamily="sans-serif-condensed-medium"/>
 
@@ -48,7 +48,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/full_name"
                         android:drawableLeft="@drawable/ic_identification"
-                        android:drawablePadding="8dp" />
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/white"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -60,7 +61,8 @@
                         android:layout_height="wrap_content"
                         android:hint="Address"
                         android:drawableLeft="@drawable/ic_notebook"
-                        android:drawablePadding="8dp" />
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/white"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -73,7 +75,8 @@
                         android:hint="@string/email"
                         android:inputType="textEmailAddress"
                         android:drawableLeft="@drawable/ic_email"
-                        android:drawablePadding="8dp"/>
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/white"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -86,7 +89,8 @@
                         android:hint="@string/password"
                         android:inputType="textPassword"
                         android:drawableLeft="@drawable/ic_padlock"
-                        android:drawablePadding="8dp"/>
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/white"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -99,7 +103,8 @@
                         android:hint="@string/retype_password"
                         android:inputType="textPassword"
                         android:drawableLeft="@drawable/ic_padlock"
-                        android:drawablePadding="8dp" />
+                        android:drawablePadding="8dp"
+                        android:textColor="@color/white"/>
                 </android.support.design.widget.TextInputLayout>
 
 
@@ -110,12 +115,10 @@
                     android:layout_height="wrap_content"
                     android:onClick="doRegister"
                     android:text="@string/submit_register"
-                    android:textColor="@android:color/black"
-                    app:backgroundTint="@android:color/transparent"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/colorAccent"
                     app:cornerRadius="5dp"
                     app:rippleColor="#33AAAAAA"
-                    app:strokeColor="@color/colorAccent"
-                    app:strokeWidth="2dp"
                     android:layout_marginTop="30dp"/>
 
             </LinearLayout>
@@ -128,5 +131,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible"/>
 </RelativeLayout>
