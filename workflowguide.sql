@@ -1,3 +1,4 @@
+
 --
 -- Database: `workflowguide`
 --
@@ -16,15 +17,10 @@ CREATE TABLE `m_company` (
   `business_type` varchar(32) NOT NULL,
   `phone_number` varchar(32) NOT NULL,
   `website` varchar(40) NOT NULL,
-  `incorporated_date` date NOT NULL,
+  `incorporated_date` date DEFAULT NULL,
   `company_img` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data untuk tabel `m_company`
---
-
--- --------------------------------------------------------
 
 --
 -- Struktur dari tabel `m_user`
@@ -41,6 +37,7 @@ CREATE TABLE `m_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+--
 -- Indexes for table `m_company`
 --
 ALTER TABLE `m_company`
@@ -56,11 +53,6 @@ ALTER TABLE `m_user`
 -- AUTO_INCREMENT for dumped tables
 --
 
---
--- AUTO_INCREMENT for table `m_company`
---
-ALTER TABLE `m_company`
-  MODIFY `company_id` bigint(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1557814207;
 --
 -- AUTO_INCREMENT for table `m_user`
 --
