@@ -1,5 +1,4 @@
 
---
 -- Database: `workflowguide`
 --
 
@@ -11,16 +10,18 @@
 
 CREATE TABLE `m_company` (
   `company_id` bigint(64) NOT NULL,
-  `company_name` varchar(32) NOT NULL,
-  `company_address` varchar(32) NOT NULL,
-  `company_director` varchar(32) NOT NULL,
-  `business_type` varchar(32) NOT NULL,
-  `phone_number` varchar(32) NOT NULL,
-  `website` varchar(40) NOT NULL,
+  `company_name` varchar(32) DEFAULT NULL,
+  `company_address` varchar(32) DEFAULT NULL,
+  `company_director` varchar(32) DEFAULT NULL,
+  `business_type` varchar(32) DEFAULT NULL,
+  `phone_number` varchar(32) DEFAULT NULL,
+  `website` varchar(40) DEFAULT NULL,
   `incorporated_date` date DEFAULT NULL,
-  `company_img` mediumtext NOT NULL
+  `company_img` mediumtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+-- --------------------------------------------------------
 
 --
 -- Struktur dari tabel `m_user`
