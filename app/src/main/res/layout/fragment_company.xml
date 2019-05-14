@@ -413,25 +413,14 @@
                 android:elevation="5px"
                 />
 
-            <android.support.v7.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:id="@+id/CV_Profile"
-                app:cardCornerRadius="50dp"
-                android:shape="ring"
-                android:elevation="0px"
-                android:background="@color/background"
-                android:outlineAmbientShadowColor="@color/dark80"
-                android:outlineSpotShadowColor="@color/dark80">
-
-                <ImageView
-                    android:id="@+id/id_IVphoto_profile"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:outlineAmbientShadowColor="@android:color/black"
-                    android:scaleType="fitXY" />
-
-            </android.support.v7.widget.CardView>
+                app:civ_border_color="@color/white"
+                app:civ_border_width="1dp"
+                app:civ_circle_background_color="@color/white"
+                />
 
         </RelativeLayout>
         <!--End of photo profile -->

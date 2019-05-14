@@ -15,11 +15,13 @@
     <color name="colorbluedark">#356a8c</color>
     <color name="colorbgblue">#dff8f9</color>
     <color name="dark80">#54565B</color>
-    <color name="abuabu">#DCDDDE</color>
+    <color name="abuabu">#eadfdf</color>
     <color name="abubiru">#788aaf</color>
     <color name="bluedrawer">#3384B9</color>
     <color name="colorsuccess">#39CA65</color>
     <color name="colorwarning">#F0E90F</color>
     <color name="colorred">#F01D0F</color>
     <color name="background">#dddddd</color>
+    <color name="black">#000000</color>
+    <color name="abuabubiru">#94b8b8</color>
 </resources>

@@ -31,6 +31,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tagline_header">Organize Master Data</string>
+    <string name="tagline_detail">Makes task become easier.</string>
 
 
     <string-array name="master_name">
@@ -45,24 +47,25 @@
     </string-array>
 
     <string-array name="master_detail">
-        <item>Here is to create or modify list user</item>
-        <item>Here is to create or modify list department of user</item>
-        <item>Here is to create or modify list position of user</item>
-        <item>Here is to create or modify list of job type</item>
-        <item>Here is to create or modify list of item</item>
-        <item>Here is to create or modify list of warehouse</item>
-        <item>Here is to create or modify list of step in workflow</item>
-        <item>Here is to create or modify list of workflow</item>
+        <item>List of data user</item>
+        <item>List department of user</item>
+        <item>List position of user</item>
+        <item>List of job type</item>
+        <item>List of item</item>
+        <item>List of warehouse</item>
+        <item>List of step in workflow</item>
+        <item>List of workflow</item>
     </string-array>
 
     <array name="master_images">
-        <item>@drawable/m_user</item>
-        <item>@drawable/m_department</item>
-        <item>@drawable/m_position</item>
-        <item>@drawable/m_jobtype</item>
-        <item>@drawable/m_item</item>
-        <item>@drawable/m_warehouse</item>
-        <item>@drawable/m_step</item>
-        <item>@drawable/m_workflow</item>
+        <item>@drawable/ic_m_user</item>
+        <item>@drawable/ic_m_department</item>
+        <item>@drawable/ic_m_position</item>
+        <item>@drawable/ic_m_jobtype</item>
+        <item>@drawable/ic_m_item</item>
+        <item>@drawable/ic_m_warehouse</item>
+        <item>@drawable/ic_m_step</item>
+        <item>@drawable/ic_m_workflow</item>
     </array>
+
 </resources>

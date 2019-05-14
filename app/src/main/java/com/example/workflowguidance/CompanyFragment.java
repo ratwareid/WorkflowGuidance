@@ -45,6 +45,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -57,7 +58,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class CompanyFragment extends Fragment implements View.OnClickListener, DatePickerFragment.DatePickerDialogFragmentEvents {
 
-    private ImageView IVProfile;
+    private CircleImageView CIV_Profile;
     private MaterialButton btEdit,btSave,btCancel;
     private EditText etCompanyName,etDirector,etBusinessType,etAddress,etPhone,etWeb;
     private String companyName,director,businesstype,address,phone,web,incorp;
@@ -150,7 +151,7 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
         //Other Component
         ibTakePhoto =  view.findViewById(R.id.id_take_photo);
         ibTakePhoto.setOnClickListener(this);
-        IVProfile = view.findViewById(R.id.id_IVphoto_profile);
+        CIV_Profile = view.findViewById(R.id.CV_Profile);
     }
 
     @Override
@@ -280,7 +281,7 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
                         spManager.saveSPString(SPCompanyDataKey.INCORP, CInc);
 
                         getCompanyData();
-                        IVProfile.setVisibility(View.VISIBLE);
+                        CIV_Profile.setVisibility(View.VISIBLE);
                         placeAllData();
 
                     }else{
@@ -383,13 +384,13 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
 
         //Image
         if (imgProfile.equalsIgnoreCase("")){
-            IVProfile.setImageResource(R.drawable.imageshigh);
+            CIV_Profile.setImageResource(R.drawable.imageshigh);
         }else{
             //Convert imgProfile ke bitmap lalu save ke IVProfile
             byte[] decodedString = Base64.decode(imgProfile, Base64.DEFAULT);
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
             if (decodedByte != null){
-                IVProfile.setImageBitmap(decodedByte);
+                CIV_Profile.setImageBitmap(decodedByte);
             }
         }
 
@@ -562,7 +563,7 @@ public class CompanyFragment extends Fragment implements View.OnClickListener, D
         //Try to endcode bitmap
         if (bitmap == null){
             //If bitmap failed to encode
-            IVProfile.setImageResource(R.drawable.imageshigh);
+            CIV_Profile.setImageResource(R.drawable.imageshigh);
             Toast.makeText(getContext(),"Cant find specific images",Toast.LENGTH_LONG).show();
         }else {
             //If success encode
