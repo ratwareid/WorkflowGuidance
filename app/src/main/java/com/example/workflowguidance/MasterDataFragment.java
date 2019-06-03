@@ -1,14 +1,17 @@
 package com.example.workflowguidance;
 
+import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.workflowguidance.adapter.MasterDataAdapter;
 import com.example.workflowguidance.model.MasterData;
@@ -22,6 +25,8 @@ public class MasterDataFragment extends Fragment {
     private ArrayList<MasterData> mMasterData;
     private MasterDataAdapter mAdapter;
     private ItemTouchHelper itemTouchHelper;
+    private TextView marqueetext;
+    public MainActivity mainActivity;
 
     public MasterDataFragment() {
         // Required empty public constructor
@@ -39,10 +44,16 @@ public class MasterDataFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mainActivity = (MainActivity) context;
+    }
+
     public void init(View view){
 
         mMasterData =  new ArrayList<>();
-        mAdapter = new MasterDataAdapter(this.getContext(), mMasterData);
+        mAdapter = new MasterDataAdapter(this.getContext(), mMasterData,mainActivity);
 
         int gridColumnCount = getResources().getInteger(R.integer.grid_column_count);
         mRecyclerView = view.findViewById(R.id.recycler_master);
@@ -58,6 +69,10 @@ public class MasterDataFragment extends Fragment {
 
         //Recycler item toucher helper
         initializeData();
+
+        //Marquee
+        marqueetext = view.findViewById(R.id.footer_running);
+        marqueetext.setSelected(true);
     }
 
     private void initializeData() {

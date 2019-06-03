@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.workflowguidance.MainActivity;
 import com.example.workflowguidance.R;
 import com.example.workflowguidance.master.MasterUser;
 import com.example.workflowguidance.model.MasterData;
@@ -21,10 +22,12 @@ import java.util.List;
 public class MasterDataAdapter extends RecyclerView.Adapter<MasterDataAdapter.ViewHolder> {
     private ArrayList<MasterData> mMasterData;
     private Context mContext;
+    private MainActivity activity;
 
-    public MasterDataAdapter(Context context, ArrayList<MasterData> masterData) {
+    public MasterDataAdapter(Context context, ArrayList<MasterData> masterData, MainActivity mainActivity) {
         this.mMasterData = masterData;
         this.mContext = context;
+        this.activity = mainActivity;
     }
 
     @Override
@@ -74,11 +77,11 @@ public class MasterDataAdapter extends RecyclerView.Adapter<MasterDataAdapter.Vi
         @Override
         public void onClick(View view) {
             MasterData currentMaster = mMasterData.get(getAdapterPosition());
-            Intent detailIntent = new Intent(mContext, MasterUser.class);
-            detailIntent.putExtra("title", currentMaster.getName());
-            detailIntent.putExtra("image_resource", currentMaster.getImgResouce());
+            if (currentMaster.getName().equalsIgnoreCase("Master User")) {
+                Intent i = new Intent(mContext,MasterUser.class);
+                activity.startActivityForResult(i,1);
+            }
 
-            mContext.startActivities(new Intent[]{detailIntent});
         }
     }
 }

@@ -6,7 +6,6 @@
     android:background="@color/abuabu">
 
     <RelativeLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -42,13 +41,27 @@
             android:textStyle="italic"
             android:fontFamily="sans-serif-medium"/>
 
+        <TextView
+            android:id="@+id/footer_running"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_header"
+            android:text="@string/msg_running"
+            android:paddingVertical="10dp"
+            android:background="@color/coloryellow"
+            android:textColor="@color/black"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:fadingEdge="horizontal"
+            android:gravity="center"
+            />
+
         <android.support.v7.widget.RecyclerView
-            android:layout_marginTop="5dp"
             android:id="@+id/recycler_master"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/image_header"/>
-
+            android:layout_below="@id/footer_running"/>
     </RelativeLayout>
 
 </ScrollView>

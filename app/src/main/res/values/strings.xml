@@ -33,6 +33,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tagline_header">Organize Master Data</string>
     <string name="tagline_detail">Makes task become easier.</string>
+    <string name="msg_running">Please fill in all parts of the master data for easier to make work orders</string>
 
 
     <string-array name="master_name">
@@ -48,8 +49,8 @@
 
     <string-array name="master_detail">
         <item>List of data user</item>
-        <item>List department of user</item>
-        <item>List position of user</item>
+        <item>List of department</item>
+        <item>List of position</item>
         <item>List of job type</item>
         <item>List of item</item>
         <item>List of warehouse</item>
