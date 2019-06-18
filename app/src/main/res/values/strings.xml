@@ -34,6 +34,7 @@
     <string name="tagline_header">Organize Master Data</string>
     <string name="tagline_detail">Makes task become easier.</string>
     <string name="msg_running">Please fill in all parts of the master data for easier to make work orders</string>
+    <string name="copyright_ratwareid">Workflow Guidance - Ratwareid @2019</string>
 
 
     <string-array name="master_name">
@@ -67,6 +68,51 @@
         <item>@drawable/ic_m_warehouse</item>
         <item>@drawable/ic_m_step</item>
         <item>@drawable/ic_m_workflow</item>
+    </array>
+
+
+    <string-array name="username">
+        <item>User 1</item>
+        <item>User 2</item>
+        <item>User 3</item>
+        <item>User 4</item>
+        <item>User 5</item>
+        <item>User 6</item>
+        <item>User 7</item>
+        <item>User 8</item>
+    </string-array>
+
+    <string-array name="userpos">
+        <item>HRD</item>
+        <item>Java Web Programmer</item>
+        <item>Technician</item>
+        <item>Technician</item>
+        <item>Mobile Developer</item>
+        <item>Mobile Developer</item>
+        <item>Senior Analyst</item>
+        <item>CEO</item>
+    </string-array>
+
+    <string-array name="userdiv">
+        <item>Human Resouce</item>
+        <item>IT &amp; Networking</item>
+        <item>IT &amp; Networking</item>
+        <item>IT &amp; Networking</item>
+        <item>IT &amp; Networking</item>
+        <item>IT &amp; Networking</item>
+        <item>IT &amp; Networking</item>
+        <item>-</item>
+    </string-array>
+
+    <array name="userpict">
+        <item>@drawable/ic_user_new</item>
+        <item>@drawable/ic_user_new</item>
+        <item>@drawable/ic_user_new</item>
+        <item>@drawable/ic_user_new</item>
+        <item>@drawable/ic_user_new</item>
+        <item>@drawable/ic_user_new</item>
+        <item>@drawable/ic_user_new</item>
+        <item>@drawable/ic_user_new</item>
     </array>
 
 </resources>

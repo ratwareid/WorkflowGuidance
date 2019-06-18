@@ -9,12 +9,20 @@ public class UserData {
     private String password;
     private Long companyID;
     private String f_active;
-    private String imgBmp;
+    private int imgBmp;
     private Long positionID;
     private Long divisionID;
 
     private String positionName;
     private String divisionName;
+
+    public int getImgBmp() {
+        return imgBmp;
+    }
+
+    public void setImgBmp(int imgBmp) {
+        this.imgBmp = imgBmp;
+    }
 
     public Long getUserID() {
         return userID;
@@ -70,14 +78,6 @@ public class UserData {
 
     public void setF_active(String f_active) {
         this.f_active = f_active;
-    }
-
-    public String getImgBmp() {
-        return imgBmp;
-    }
-
-    public void setImgBmp(String imgBmp) {
-        this.imgBmp = imgBmp;
     }
 
     public Long getPositionID() {
